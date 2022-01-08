@@ -87,6 +87,7 @@ function axiosCSV(url) {
 function getMarketStatus() {
   return axios.get(MARKET_STATUS_URL, {
     transformResponse: function (data) {
+      console.log("Data is",data)
       return {
         status: JSON.parse(data).NormalMktStatus
       };
