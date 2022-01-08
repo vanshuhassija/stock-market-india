@@ -15,14 +15,17 @@ app.listen(PORT, () => {
 // National Stock Exchange (NSE) APIS
 app.get("/", (req, res, next) => {
   res.send("Welcome to Stockwatch API");
-}
+
 });
 // Get the stock market status (open/closed) - JSON
 // Example: http://localhost:3000/get_market_status
 app.get("/get_market_status", (req, res, next) => {
+  console.log("Req is",req);
   NSEAPI.getMarketStatus()
     .then(function (response) {
       res.json(response.data);
+    }).catch(err=>{
+      console.error("Error is",err);
     });
 });
 
