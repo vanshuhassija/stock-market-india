@@ -1,5 +1,4 @@
 var axios = require('axios');
-const fetch = require('node-fetch');
 var csv2Json = require('../../utils/csv2Json');
 
 var MARKET_STATUS_URL = require('../constant').MARKET_STATUS_URL;
@@ -84,11 +83,8 @@ function axiosCSV(url) {
   });
 }
 
-async function getMarketStatus() {
+function getMarketStatus() {
   console.log('getMarketStatus');
-  const response=fetch(MARKET_STATUS_URL);
-  const json=await response.json();
-  console.log("Fetch Response",response,json);
   return axios.get(MARKET_STATUS_URL, {
     transformResponse: function (data) {
       console.log("Data is",data)
