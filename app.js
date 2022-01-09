@@ -14,7 +14,7 @@ app.listen(PORT, () => {
 
 // National Stock Exchange (NSE) APIS
 app.get("/", async (req, res, next) => {
-  const response=await axios.get("https://www1.nseindia.com//emerge/homepage/smeNormalMktStatus.json");
+  const response=await axios.get(" https://www.nseindia.com/api/allIndices");
   console.log("Here",response);
   return res.json(response.data);
 
