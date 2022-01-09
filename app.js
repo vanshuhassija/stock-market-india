@@ -14,7 +14,14 @@ app.listen(PORT, () => {
 
 // National Stock Exchange (NSE) APIS
 app.get("/", async (req, res, next) => {
-  const response=await axios.get(" https://www.nseindia.com/api/allIndices");
+  const config = {
+    method: 'get',
+    url: 'https://www.nseindia.com/api/allIndices',
+    headers: { 
+      'Cookie': 'ak_bmsc=A74EA2188F0B3AFAE0C7BDFA86DF34A2~000000000000000000000000000000~YAAQ7+/IF3BYYh5+AQAATjfNPQ6EvXQb1XDeePZavrR/Qm0/yAKBt/DfI1nSwgVKyCP/rTP2rkqOAkvdYpBB2VKkKoEH+IjbionBkv1fUFP8KFfOIwaRrN8/MxfkNUIge879u3LK2S29ABpT7a0GzOFONMs1lqp1paDrYWMbzrvVJ/dOX8CKisK0pl6bjHaCQ5Lrd+MrI426Q27ihXgpHN8R4WKj7Pm/p+X/Uf6j87PLNEJJX++QyLCcMVkQUvRcSyuXyyTinPm3Ezs6gn+lywlZ+BilOc71lfx1UVLyX+5OpCrlEQ0hDAZb6cFAiWVNQGnqBzlYynbhkHO+c7WG4X9P40KVuGnWE3w2Na83Foh0rfMeOolCkQcDrKcZl7Y=; bm_sv=6E3B4A469E4CA033078CB52A28DC5241~Unlp8wm/mFU6md4sWRqZp8ZyQE1Nzhk8D2XLJRHftx/2uiXv4+q1dWcA5wUnlk0iZAnWaJEYLwYS5gzGI3rFyvCfHhBAPUQfxHPl8LZaSom6GTJBCLPQZGb06AQO3yrMOcsSYWsckFy8lPfnVTBRHuUNXTpkon+rCh8glLM3vag='
+    }
+  };
+  const response=await axios(config);
   console.log("Here",response);
   return res.json(response.data);
 
